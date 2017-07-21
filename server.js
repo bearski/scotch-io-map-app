@@ -7,6 +7,7 @@ var morgan          = require('morgan');
 var bodyParser      = require('body-parser');
 var methodOverride  = require('method-override');
 var app             = express();
+var path = require('path');
 
 // Express Configuration
 // -----------------------------------------------------
@@ -14,8 +15,10 @@ var app             = express();
 mongoose.connect("mongodb://localhost/MeanMapApp");
 
 // Logging and Parsing
-app.use(express.static(__dirname + '/public'));                 // sets the static files location to public
-app.use('/bower_components',  express.static(__dirname + '/bower_components')); // Use BowerComponents
+app.use(express.static(path.join(__dirname, '/public')));       // sets the static files location to public
+app.use('/bower_components',  express.static( path.join(__dirname, '/bower_components'))); // Use BowerComponents
+// console.log('DIRNAME:', __dirname, 'JOINED:', path.join(__dirname, '/bower_components'));
+
 app.use(morgan('dev'));                                         // log with Morgan
 app.use(bodyParser.json());                                     // parse application/json
 app.use(bodyParser.urlencoded({extended: true}));               // parse application/x-www-form-urlencoded
