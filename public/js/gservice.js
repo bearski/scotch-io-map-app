@@ -145,7 +145,7 @@ angular.module('gservice', [])
           // Create a new red bouncing marker and move to it
           lastMarker = marker;
           map.panTo(marker.position);
-          
+
           // Update Broadcasted Variable (lets the panels know to change their lat, long values)
           googleMapService.clickLat = marker.getPosition().lat();
           googleMapService.clickLong = marker.getPosition().lng();
